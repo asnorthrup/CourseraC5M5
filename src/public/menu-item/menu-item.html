@@ -1,0 +1,22 @@
+<!-- this is a template for a compoenent, since we didn't define controller as syntax on menu-items state in routes, it defaults to $ctrl as name. -->
+<div class="menu-item-tile col-md-6">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="menu-item-photo">
+        <!-- $ctrl is default name of menu-item controller, name of menuItem is passed in using one way binding -->
+        <div>{{$ctrl.menuItem.short_name}}</div>
+        <!-- previously we had a image folder locally, we need to pull image from server every time, but we can deal with this in common module with apipath -->
+        <!-- now we can get the source from the controller's base path and the images name from image on the server -->
+        <img class="img-responsive" width="250" height="150" ng-src="{{$ctrl.basePath}}/images/{{$ctrl.menuItem.short_name}}.jpg" alt="{{$ctrl.menuItem.name}}">
+      </div>
+      <!-- the currency filter is applied to the price -->
+      <div class="menu-item-price">{{$ctrl.menuItem.price_small | currency}}<span> {{$ctrl.menuItem.small_portion_name}}</span> {{$ctrl.menuItem.price_large | currency}} <span>{{$ctrl.menuItem.large_portion_name}}</span></div>
+    </div>
+    <div class="menu-item-description col-sm-7">
+      <!-- name and description is interpolated, we need to make sure menu-ITem is assigned from parent of menu-items -->
+      <h3 class="menu-item-title">{{$ctrl.menuItem.name}}</h3>
+      <p class="menu-item-details">{{$ctrl.menuItem.description}}</p>
+    </div>
+  </div>
+  <hr class="visible-xs">
+</div>

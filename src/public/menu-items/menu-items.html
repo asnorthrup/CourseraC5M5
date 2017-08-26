@@ -1,0 +1,21 @@
+<div class="container">
+  <!-- heading and special instructions  are interpolated, in routes we see the controller as syntax that should be used,
+  if we look at controller, the property we expose is menuItems, category comes back from call to server as json and the
+  .name is the name of the menu from the object, special instructions are also in the category object returned from server   -->
+  <h2 id="menu-categories-title" class="text-center">
+    {{ menuItemsCtrl.menuItems.category.name}} Menu
+  </h2>
+  <div class="text-center">
+    {{ menuItemsCtrl.menuItems.category.special_instructions}}
+  </div>
+  <!-- need to iterate over menu items for data that is returned for the category of menu item -->
+  <!-- create a menu-item component, then we will repeat over that -->
+  <!-- the menu-item is a binding of each menuItem -->
+  <!-- now we'll repeat over each menu item in the category, there is a menu_items property to repeat over from the controller which was bound with menuItems and has a property of
+  menu_items which along with cateogry is another property on the menuItems that was bound-->
+  <menu-item ng-repeat="menuItem in menuItemsCtrl.menuItems.menu_items"
+             menu-item="menuItem">
+  </menu-item>
+
+
+</div>
